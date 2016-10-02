@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	function Clear()
+	{
+		document.getElementById("inputParam").value= "";
+		document.getElementById("outputParam").value= "Hello !! You entered: ";
+	}
+
+	$(document).ready(function() {
+
+		$("#btn").click(function(){
+			var text = $("#inputParam").val();
+			$.ajax({
+				url : "http://localhost:8080/demo/hello?testParam="+text,
+					success:function(resultdata){
+						$("#outputParam").val($("#outputParam").val() + resultdata);
+						},
+				error:function(e){
+							alert("Something went wrong");
+						}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	   
+	<form method="post" action="/demo/hello">
+		<center>
+			<table border="1" width="30%" cellpadding="3">
+				<thead>
+					<tr>
+						<th colspan="2">Step 3</th>                     
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Enter your text here</td>                         
+						<td><input type="text" name="inputParam" onfocus="Clear();" id="inputParam"/></td>
+					</tr>
+					<tr>
+					<td colspan="2" align="center">
+						<input type="text" class="outputParam" id="outputParam"  value="Hello !! You entered: ">
+						</td>
+					</tr>
+
+					<tr>
+						<td colspan="2" align="center">
+							<input type="button" id ="btn" value="DONE"></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</center>
+	</form>
+</body>
+</html>
