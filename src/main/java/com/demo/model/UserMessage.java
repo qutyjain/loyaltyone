@@ -8,8 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="user_message")
 public class UserMessage {
 
 	@Id
@@ -23,6 +25,9 @@ public class UserMessage {
 
 	@Column
 	private String message;
+
+	@Column
+	private Long parentMessageId;
 
 	public Long getMessageId() {
 		return messageId;
@@ -46,6 +51,14 @@ public class UserMessage {
 
 	public void setAccount(UserAccount userAccount) {
 		this.userAccount = userAccount;
+	}
+
+	public Long getParentMessageId() {
+		return parentMessageId;
+	}
+
+	public void setParentMessageId(Long parentMessageId) {
+		this.parentMessageId = parentMessageId;
 	}
 
 }

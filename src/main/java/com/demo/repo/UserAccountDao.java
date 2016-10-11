@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.demo.model.UserAccount;
-import com.demo.model.UserMessage;
 
 @Component
 public class UserAccountDao {

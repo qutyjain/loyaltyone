@@ -12,29 +12,29 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @Configuration
 public class DataSourceConfiguration {
 
-	@Bean
-	public DataSource dataSource() {
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
-		dataSource.setUsername("system");
-		dataSource.setPassword("password");
-		return dataSource;
-	}
-
-	 @Bean
-	 public EntityManagerFactory entityManagerFactory() {
-	 HibernateJpaVendorAdapter vendorAdapter = new
-	 HibernateJpaVendorAdapter();
-	 vendorAdapter.setGenerateDdl(true);
-	 LocalContainerEntityManagerFactoryBean factory = new
-	 LocalContainerEntityManagerFactoryBean();
-	 factory.setJpaVendorAdapter(vendorAdapter);
-	 factory.setPackagesToScan("com.demo");
-	 factory.setDataSource(dataSource());
-	 factory.afterPropertiesSet();
-	 return factory.getObject();
-	 }
+//	@Bean
+//	public DataSource dataSource() {
+//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//		dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
+//		dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+//		dataSource.setUsername("quty");
+//		dataSource.setPassword("password");
+//		return dataSource;
+//	}
+//
+//	 @Bean
+//	 public EntityManagerFactory entityManagerFactory() {
+//	 HibernateJpaVendorAdapter vendorAdapter = new
+//	 HibernateJpaVendorAdapter();
+//	 vendorAdapter.setGenerateDdl(true);
+//	 LocalContainerEntityManagerFactoryBean factory = new
+//	 LocalContainerEntityManagerFactoryBean();
+//	 factory.setJpaVendorAdapter(vendorAdapter);
+//	 factory.setPackagesToScan("com.demo");
+//	 factory.setDataSource(dataSource());
+//	 factory.afterPropertiesSet();
+//	 return factory.getObject();
+//	 }
 
 	// @Bean
 	// public PlatformTransactionManager transactionManager() {
