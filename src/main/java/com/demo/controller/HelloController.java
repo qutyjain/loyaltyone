@@ -52,7 +52,7 @@ public class HelloController {
 			userAccount.setUserName(userName);
 			userAccountRepo.save(userAccount);
 		}
-		if (userAccount.getUserMessageList() != null) {
+		if (userAccount.getUserMessageList() != null && !userAccount.getUserMessageList().isEmpty()) {
 			model.addObject("messages", new UserMessageUtility()
 					.getUserMessageDetailTree(userAccount.getUserMessageList()));
 		} else {
@@ -62,6 +62,5 @@ public class HelloController {
 		model.addObject("userId", userAccount.getUserId());
 		model.setViewName("hello");
 		return model;
-
 	}
 }

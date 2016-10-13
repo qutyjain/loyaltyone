@@ -6,20 +6,26 @@
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+
+
 	$(document).ready(function() {
 
 		function saveMessage(msg,user,parentMessageId){
+			if(msg.length>0 ){
 			$.ajax({
-				url : "http://localhost:8080/demo/Message?message="+msg+"&username="+user+"&parentMessageId="+parentMessageId,
+				url : "https://localhost:8443/demo/Message?message="+msg+"&username="+user+"&parentMessageId="+parentMessageId,
 						method:"Post",
 					success:function(resultdata){
 						window.location.reload(false);
 						},
 				error:function(e){
-							alert("Something went wrong");
 						}
 			});
 
+		}
+			else{
+				alert("Need to enter some message");
+			}
 		}
 
 		$(".comment").click(function(){
@@ -43,11 +49,10 @@
 	});
 
 	</script>
-
  	<input type="hidden" id="username" value="${username}"/>
 	<h1>Hello!! ${username}</h1>
 	<TEXTAREA ID="commentText" NAME="message" ROWS="5" ></TEXTAREA>
-	<INPUT TYPE="BUTTON" ID="commentAdd" VALUE="Add Message" >
+	<INPUT TYPE="Submit" ID="commentAdd" VALUE="Add Message">
 	<h1>Your message list is as below:</h1>
 	<table border="1" width="30%" cellpadding="3">
 		<c:forEach items="${messages}" var="messageVar">

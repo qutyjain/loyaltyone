@@ -10,20 +10,29 @@ import java.util.Map.Entry;
 import com.demo.model.UserMessage;
 import com.demo.model.UserMessageDetail;
 
+/**
+ * @author Swastika
+ * Utility to convert Message list in Parent-Child hierarchy structure.
+ *
+ */
 public class UserMessageUtility {
 
-	int hops = 0;
-	Long previousMinParentMsgId = -1L;
+	private int hops = 0;
+	private Long previousMinParentMsgId = -1L;
 
-	boolean parentfound = false;
-	boolean messageAdded = false;
-	boolean mapCreated = false;
+	private boolean parentfound = false;
+	private boolean messageAdded = false;
+	private boolean mapCreated = false;
 
 	Map<Integer, UserMessage> hopMap = new HashMap<Integer, UserMessage>();
 	Map<Long, UserMessage> userMessageMap = new HashMap<Long, UserMessage>();
 
 	List<UserMessageDetail> displayMessageList = new ArrayList<UserMessageDetail>();
 
+	/**
+	 * @param userMessageList
+	 * @return
+	 */
 	public List<UserMessageDetail> getUserMessageDetailTree(
 			List<UserMessage> userMessageList) {
 		Map<Long, List<UserMessageDetail>> userDetailMap = new TreeMap<Long, List<UserMessageDetail>>();
